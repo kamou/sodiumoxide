@@ -48,6 +48,13 @@ impl AsRef<[u8]> for Digest {
     }
 }
 
+impl AsMut<[u8]> for Digest {
+    #[inline]
+    fn as_mut(&mut self) -> &mut [u8] {
+        &mut self.data[0..self.len]
+    }
+}
+
 impl PartialOrd for Digest {
     #[inline]
     fn partial_cmp(&self, other: &Digest) -> Option<Ordering> {
